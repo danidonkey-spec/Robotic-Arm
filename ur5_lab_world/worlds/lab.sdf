@@ -1,0 +1,55 @@
+<sdf version="1.9">
+  <world name="lab">
+
+    <!-- Light (replaces model://sun) -->
+    <light name="sun" type="directional">
+      <pose>0 0 10 0 0 0</pose>
+      <direction>-0.5 0.1 -1</direction>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>100</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>true</cast_shadows>
+    </light>
+
+    <!-- Ground plane (replaces model://ground_plane) -->
+    <model name="ground">
+      <static>true</static>
+      <link name="ground_link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>50 50</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>50 50</size>
+            </plane>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Table -->
+    <include>
+      <uri>model://table</uri>
+      <pose>0.6 0 0 0 0 0</pose>
+    </include>
+
+    <!-- Camera -->
+    <include>
+      <uri>model://realsense_rgbd</uri>
+      <pose>0.3 0 0.85 0 -1.57 0</pose>
+    </include>
+
+  </world>
+</sdf>
